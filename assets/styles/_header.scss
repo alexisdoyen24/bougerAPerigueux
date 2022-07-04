@@ -1,0 +1,195 @@
+// ---------------TITLE PART-----------------
+#titleNav{
+    padding: 2em 0em 2em 3em;
+    position: relative;
+    @include flex (flex-start, row, flex-start);
+    background-color: $primaryColor;
+    color: aliceblue;
+
+    a{
+        color: aliceblue;
+        position: relative;
+        padding: 0 30px;
+    }
+
+    // Animation liens NAVBAR----------------------
+    a::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background: $secondaryColor;
+        // z-index: -1;
+        transition: .4s all;
+    }
+    
+    a:hover::before{
+        width: 100%;
+        opacity: 0.05;
+                    
+    
+    }
+    a:hover{
+        color: $secondaryColor;
+    }
+
+    .log{
+        position: absolute;
+        right: 10px;
+        margin: 0.67em;
+
+        ul{
+            @include flex (center, row, flex-start);              
+            li{
+                margin-right: 1em;
+                a{
+                    color: aliceblue;
+                }
+                a:hover{
+                    color: $secondaryColor;
+                }
+            }
+        }
+    }
+}
+
+// ------------------NAVBAR PART------------------
+
+#navBar{
+    background-color: $secondaryColor;
+    padding: 2em;
+
+    ul{
+        @include flex (space-around, row, flex-start);
+
+        li{
+            a{
+                color: aliceblue;
+                font-weight: 600;
+                position: relative;
+                padding: 0 15px;
+            }
+
+            // Animation liens NAVBAR----------------------
+            a::before{
+                content: '';
+                position: absolute;
+                left: 0;
+                height: 100%;
+                width: 2px;
+                background: $primaryColor;
+                // z-index: -1;
+                transition: .4s all;
+            }
+
+            a:hover::before{
+                width: 100%;
+                opacity: 0.05;
+                
+
+            }
+            a:hover{
+                color: $primaryColor;
+            }
+        }
+    }
+    
+}
+
+/* ------------------Sidenav menu------------- */
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: -250px;
+    background-color: $primaryColor;
+    padding-top: 60px;
+    margin-left: 1em;
+    transition: left 0.5s ease;
+    display: none;
+    border-left: solid 1px $secondaryColor;
+  }
+  
+  .sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  
+  /* Sidenav menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: aliceblue;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: $secondaryColor;
+  }
+  
+  /* Active class */
+  .sidenav.active {
+    right: 0;
+  }
+  
+  /* Close btn */
+  .sidenav .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+  }
+  
+  .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: $secondaryColor;
+    margin: 6px 0;
+  }
+
+  #openBtn{
+    position: absolute;
+    top: 30px;
+    right: 25px;
+    font-size: 36px;
+    display: none;
+  }
+
+// ---------------------BANNER PART--------------------
+
+
+#mainBanner{
+    background-image: url(../Images/patrimoine-perigueux.jpg);
+    background-size: cover;
+    background-position-y: center;
+    height: 500px;
+    filter: brightness(50%);
+    position: relative;
+
+    @include flex (center, column, center);
+}
+.mainBannerText{
+    position: absolute;
+    top: 320px;
+    color: aliceblue;
+    text-align: center;
+
+    h2{
+        font-size: 1.8em;
+    }
+
+    p{
+        margin: 2em 10em;
+        font-size: 1.3em;
+        line-height: 1.5em;
+    }
+}

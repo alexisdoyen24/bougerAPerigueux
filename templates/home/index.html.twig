@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+{{ include('header.html') }}
+
+{# BANNER PART---------------------------- #}
+
+<div id="mainBanner"></div>
+<div class="mainBannerText">
+        <h2>Guide des sorties à Périgueux et en Dordogne</h2>
+        <div class="greenLine"></div>
+
+        <p>Notre site vous propose un panorama très large d'idées de sorties à Périgueux ou de sorties en Dordogne. Notre site est un des plus complets en matière d'actualité culturelle à Périgueux car nous sommes en permanence à la recherche d'évènements à vous faire partager. Vous trouverez sur nos pages des annonces de concerts, d'expositions, de pièces de théâtre, defestivals et de toutes sortes d'évènements.</p>
+</div>
+
+{# ---------------------------------MAIN PART------------------------ #}
+{# ACTU PART-------------------------------- #}
+
+<div id="actu">
+
+    <div class="actuImage">
+        <img src="https://www.perigueux-city.com/images/images/permanent/fete-de-la-musique-perigueux.jpg" alt="image de la sortie du moment">
+    </div>
+
+    <div class="actuText">
+        <h2>La sortie du moment</h2>
+        <div class="blueLine"></div>
+        <p>
+            Comme chaque année, à Périgueux comme ailleurs, le premier jour de l'été est une fête consacrée à la musique. Véritable phénomène de société, la fête de la musique est LE rendez-vous incontournable des amateurs de musique même si d'années en années, on tend à y retrouver toujours les mêmes groupes et DJ semi-professionnels qui mettent à mal l'esprit original de cette fête.
+        </p>
+    </div>
+</div>
+{% for event in events %}
+
+    <article>
+        <div class="image">
+            <img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement">
+            <p>Prix : {{ event.price }} €</p>
+        </div>
+
+        <div class="description">
+            {{ event.name }}
+            {# {{ event.fixed }} #}
+            <p>{{ event.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
+            <p>Durée de la sortie : {{ event.duration }} heures</p>
+            {{ event.enterpriseName }}
+            <p>Description : {{ event.description }}</p>
+            <p>Localité : {{ event.locality }}</p>
+            {# {{ event.image }} #}
+            {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+            <p>{{ event.link }}</p>
+            <p>{{ event.type }}</p>
+        </div>
+
+    </article>
+    <div class="blueLine"></div>
+
+
+{% endfor %}
+
+{{ include('footer.html') }}
+
+
+{% endblock %}

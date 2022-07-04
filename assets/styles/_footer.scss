@@ -1,0 +1,15 @@
+#footer{
+    padding: 3em;
+    background-color: $primaryColor;
+    color: aliceblue;
+
+    ul{
+        @include flex (space-around, row, flex-start);              
+        li{
+            margin-right: 1em;
+            a{
+                color: aliceblue;
+            }
+        }
+    }   
+}

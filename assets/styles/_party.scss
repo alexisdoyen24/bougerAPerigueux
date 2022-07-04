@@ -1,0 +1,27 @@
+#partyBanner{
+    background-image: url(../Images/fete2.jpeg);
+    background-size: cover;
+    background-position-y: center;
+    height: 500px;
+    filter: brightness(50%);
+    position: relative;
+
+    @include flex (center, column, center);
+}
+
+.partyBannerText{
+    position: absolute;
+    top: 320px;
+    color: aliceblue;
+    text-align: center;
+
+    h2{
+        font-size: 1.8em;
+    }
+
+    p{
+        margin: 2em 10em;
+        font-size: 1.3em;
+        line-height: 1.5em;
+    }
+}

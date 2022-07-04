@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}kids{% endblock %}
+
+{% block body %}
+
+{{ include('header.html') }}
+
+{# BANNER PART---------------------------- #}
+
+<div id="kidsBanner"></div>
+
+<div class="kidsBannerText">
+    <h2>Jeune public</h2>
+    <div class="greenLine"></div>
+
+    <p>
+        Vous cherchez des activités adaptées à vos enfants quelque soit leurs âges ? Nous recensons pour vous les meilleures endroits pour petits et grand !
+    </p>
+</div>
+
+
+{% for kid in kids %}
+    {% if kid.type.id == 5 %}
+    
+        <article>
+            <div class="image">
+                <img src="{{ asset('upload_directory/' ~kid.image) }}" alt="image de l'évènement">
+                <p>Prix : {{ kid.price }} €</p>
+            </div>
+
+            <div class="description">
+                {{ kid.name }}
+                {# {{ event.fixed }} #}
+                <p>{{ kid.eventDate | format_datetime(locale='fr',pattern='dd MMMM YYYY') }}</p>
+                <p>Durée de la sortie {{ kid.duration }} heures</p>
+                <p>{{ kid.enterpriseName }}</p>
+                <p>Description : {{ kid.description }}</p>
+                <p>Localité : {{ kid.locality }}</p>
+                {# {{ event.image }} #}
+                {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+                <p>{{ kid.link }}</p>
+                <p>{{ kid.type }}</p>
+            </div>
+
+        </article>
+        <div class="blueLine"></div>
+    {% endif %}
+{% endfor %}
+
+{{ include('footer.html') }}
+
+
+{% endblock %}

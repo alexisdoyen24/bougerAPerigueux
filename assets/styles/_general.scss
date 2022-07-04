@@ -1,0 +1,34 @@
+body{
+    background-color: $secondaryColor;
+}
+
+article{
+    @include flex (center, row, flex-start);
+    background-color: $secondaryColor;
+    margin: 2em 0em;
+    color: $primaryColor;
+    font-size: 1.2em;
+
+
+    .image{
+        @include flex (center, column, flex-start);
+        width: 50%;
+
+        p{
+            margin: auto;
+        }
+
+        img{
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            max-height: 400px;
+        }
+    }
+
+    .description{
+        width: 50%;
+        @include flex (center, column, center);
+        margin: auto;
+    }
+}

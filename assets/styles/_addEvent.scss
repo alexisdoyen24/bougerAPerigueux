@@ -1,0 +1,93 @@
+#addEventContainer{
+    padding: 8em;
+    background-image: url(../Images/Beynac.jpg);
+    background-size: cover;
+    background-position-y: center;
+
+    .addEvent{
+        width: 50%;
+        background-color: $primaryColor;
+        margin: auto;
+        padding: 4em;
+        opacity: 0.9;
+        border-radius: 10px;
+
+        h1{
+            text-align: center;
+            color: aliceblue;
+            margin-bottom: 1.5em;
+        }
+
+        #event_Envoyer{
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-family: 'Montserrat';
+            color: $primaryColor;
+            font-weight: bold;
+            border: 2px solid $secondaryColor;
+            transition: .3s linear;
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+
+        #event_Envoyer:hover{
+            background-color: $secondaryColor;
+            color: aliceblue;
+        }
+
+        #event_Envoyer::before{
+            content: '';
+            position: absolute;
+            width: 0px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $primaryColor;
+            z-index: -1;
+            transition: .4s linear;
+        }
+
+        #event_Envoyer:hover::before{
+            width: 100%;
+        }
+
+        #event_fixed{
+            width: 2em;
+            height: 2em;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+            padding: 0.8em 0em;
+            color: aliceblue;
+            font-family: 'HindMadurai';
+            margin-right: 1em;
+        }
+
+        input{
+            width: 350px;
+            height: 2em;
+            max-width: 100%;
+        }
+
+        #registration_form_agreeTerms{
+            width: auto;
+            height: auto;
+        }
+
+        #registration_form_image{
+            color: aliceblue;
+            font-family: 'HindMadurai';
+        }
+
+        #event_eventDate{
+            display: inline;
+        }
+    }
+}

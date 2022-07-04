@@ -1,0 +1,70 @@
+<!-- {# ----------------------HEADER PART---------------------------------- #} -->
+
+<!-- {# TITLE PART------------------ #} -->
+
+<div id="titleNav">
+    <h1><a href="{{ path('app_home') }}"> Bouger à Périgueux</a></h1>
+
+    <div class="log">
+        <ul>
+            
+
+            {% if app.user %}               
+                <li>Bienvenue {{ app.user.name }}</li>
+                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+
+                {% else %}
+                <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</div>
+
+<!-- {# NAVBAR PART------------------------ #} -->
+
+<div id="navBar">
+    <ul>
+        <li><a href="{{ path('app_free') }}">Sorties gratuites</a></li>
+        <li><a href="{{ path('app_kids') }}">Jeune public</a></li>
+        <li><a href="{{ path('app_sport') }}">Sorties sportives</a></li>
+        <li><a href="{{ path('app_party') }}">Sorties festives</a></li>
+        {% if app.user %}  
+        <li><a href="{{ path('app_addEvent') }}">Proposer une sortie</a></li>
+        {% endif %}
+    
+    </ul>
+</div>
+
+<!-- MOBILE NAVBAR----------------------------- -->
+
+<div id="mySidenav" class="sidenav">
+    <a id="closeBtn" href="#" class="close">&times;</a>
+    <ul>
+        {% if app.user %}             
+            <!-- <li>Bienvenue {{ app.user.name }}</li> -->
+            <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+
+            {% else %}
+            <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+        {% endif %}
+        <div class="greenLine"></div>
+        <li><a href="{{ path('app_free') }}">Sorties gratuites</a></li>
+        <li><a href="{{ path('app_kids') }}">Jeune public</a></li>
+        <li><a href="{{ path('app_sport') }}">Sorties sportives</a></li>
+        <li><a href="{{ path('app_party') }}">Sorties festives</a></li>
+        {% if app.user %}  
+        <li><a href="{{ path('app_addEvent') }}">Proposer une sortie</a></li>
+        {% endif %}
+    </ul>
+</div>
+  
+<a href="#" id="openBtn">
+<span class="burger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+</span>
+</a>

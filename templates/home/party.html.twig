@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}party{% endblock %}
+
+{% block body %}
+
+{{ include('header.html') }}
+
+{# BANNER PART---------------------------- #}
+
+<div id="partyBanner"></div>
+
+<div class="partyBannerText">
+    <h2>Vos sorties festives</h2>
+    <div class="greenLine"></div>
+
+    <p>
+        Vous cherchez un endroit sympa simplement pour boire un verre ? Peut être avez vous envie de danser toute la nuit dans un festival local ? Nous recensons ici pour vous toutes les fête de périgueux et ses alentours.
+    </p>
+</div>
+
+{% for party in parties %}
+    {% if party.type.id == 9 %}
+
+        <article>
+            <div class="image">
+                <img src="{{ asset('upload_directory/' ~party.image) }}" alt="image de l'évènement">
+                <p>Prix : {{ party.price }} €</p>
+            </div>
+
+            <div class="description">
+                {{ party.name }}
+                {# {{ event.fixed }} #}
+                <p>{{ party.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
+                <p>Durée de la sortie : {{ party.duration }} heures</p>
+                {{ party.enterpriseName }}
+                <p>Description : {{ party.description }}</p>
+                <p>Localité : {{ party.locality }}</p>
+                {# {{ event.image }} #}
+                {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+                <p>{{ party.link }}</p>
+                <p>{{ party.type }}</p>
+            </div>
+
+        </article>
+        <div class="blueLine"></div>
+    {% endif %}
+{% endfor %}
+
+
+{{ include('footer.html') }}
+
+
+{% endblock %}

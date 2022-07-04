@@ -1,0 +1,47 @@
+@import "fonts";
+@import "mixins";
+@import "general.scss";
+@import "header";
+@import "login";
+@import "home";
+@import "party";
+@import "free";
+@import "kids";
+@import "sport";
+@import "register";
+@import "addEvent";
+@import "footer";
+@import "mediaQueries.scss";
+
+*{
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, h3, h4, a{
+    font-family: 'Montserrat';
+}
+
+p{
+    font-family: 'HindMadurai';
+}
+
+.greenLine{
+    background-color: $secondaryColor;
+    width: 30%;
+    height: 2px;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.blueLine{
+    background-color: $thirdColor;
+    width: 30%;
+    height: 2px;
+    margin: auto;
+    margin-top: 2em;
+}
+

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}sport{% endblock %}
+
+{% block body %}
+
+{{ include('header.html') }}
+
+{# BANNER PART---------------------------- #}
+
+<div id="sportBanner"></div>
+
+<div class="sportBannerText">
+    <h2>Vos sorties sportives</h2>
+    <div class="greenLine"></div>
+
+    <p>
+        A Périgueux et tout autour, les sportifs aussi trouveront leur bonheur : accrobranche, canoë, golf... et plus encore à découvrir.
+    </p>
+</div>
+
+{% for sport in sports %}
+    {% if sport.type.id == 8 %}
+
+        <article>
+            <div class="image">
+                <img src="{{ asset('upload_directory/' ~sport.image) }}" alt="image de l'évènement">
+                <p>Prix : {{ sport.price }} €</p>
+            </div>
+
+            <div class="description">
+                {{ sport.name }}
+                {# {{ event.fixed }} #}
+                <p>{{ sport.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
+                <p>Durée de la sortie : {{ sport.duration }} heures</p>
+                {{ sport.enterpriseName }}
+                <p>Description : {{ sport.description }}</p>
+                <p>Localité : {{ sport.locality }}</p>
+                {# {{ event.image }} #}
+                {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+                <p>{{ sport.link }}</p>
+                <p>{{ sport.type }}</p>
+            </div>
+
+        </article>
+        <div class="blueLine"></div>
+    {% endif %}
+{% endfor %}
+
+
+{{ include('footer.html') }}
+
+
+{% endblock %}
