@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
-class EventType extends AbstractType
+class ModifyEventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -46,6 +46,7 @@ class EventType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
+                'data_class' => null,
                 'constraints' => [
                     new File([
                         'maxSize' => '10M',

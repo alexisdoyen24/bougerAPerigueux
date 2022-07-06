@@ -13,6 +13,7 @@ article{
     .image{
         @include flex (center, column, flex-start);
         width: 50%;
+        margin: auto;
 
         p{
             margin: auto;
@@ -23,6 +24,7 @@ article{
             transform: translateX(-50%);
             width: 300px;
             max-height: 400px;
+            vertical-align: middle;
         }
     }
 
@@ -30,5 +32,25 @@ article{
         width: 50%;
         @include flex (center, column, center);
         margin: auto;
+        margin-right: 2em;
+
+        p{
+            padding: 5px;
+            color: $primaryColor;
+            span{
+                text-decoration: underline;
+            }
+        }
     }
+}
+
+button{
+    width: 10em;
+    color: red;
+    background-color: black;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+button:hover{
+    background-color: blue;
 }

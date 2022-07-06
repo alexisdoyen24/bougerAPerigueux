@@ -30,20 +30,31 @@
             </div>
 
             <div class="description">
-                {{ kid.name }}
+                <h3>{{ kid.name }}</h3>
                 {# {{ event.fixed }} #}
                 <p>{{ kid.eventDate | format_datetime(locale='fr',pattern='dd MMMM YYYY') }}</p>
-                <p>Durée de la sortie {{ kid.duration }} heures</p>
+                <p><span>Durée de la sortie</span> {{ kid.duration }} heures</p>
                 <p>{{ kid.enterpriseName }}</p>
-                <p>Description : {{ kid.description }}</p>
-                <p>Localité : {{ kid.locality }}</p>
-                {# {{ event.image }} #}
-                {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+                <p><span>Description :</span> {{ kid.description }}</p>
+                <p><span>Localité :</span> {{ kid.locality }}</p>
                 <p>{{ kid.link }}</p>
                 <p>{{ kid.type }}</p>
             </div>
 
         </article>
+
+            {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
+    {% if app.user == kid.user or is_granted('ROLE_ADMIN') %}
+        <form action="{{ path('app_deleteEvent',{id:kid.id})}}" method='POST'>
+
+        <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
+        <button type="submit">Supprimer</button>
+        
+        </form>
+
+        <a href="{{path('app_editEvent', {id:kid.id})}}">Editer</a>
+    {% endif %}
+
         <div class="blueLine"></div>
     {% endif %}
 {% endfor %}

@@ -1,34 +1,11 @@
-#actu{
-    @include flex (center, row, flex-start);
-    background-color: $secondaryColor;
-
-    .actuImage{
-        width: 50%;
-        img{
-            margin-left: 50%;
-            transform: translateX(-50%);
-            margin-top: 4em;
-            margin-bottom: 4em;
-            width: 250px;
-            height: 350px;
-        }
-        
+.lastEvent{
+    h1{
+        color: $primaryColor;
+        margin-top: 1em;
+        text-align: center;
     }
-
-    .actuText{
-        width: 50%;
-        @include flex (center, column, center);
-        margin: auto;
-
-        h2{
-            color: $primaryColor;
-            margin-top: 1em;
-        }
-
-        p{
-            margin: 3em 2.5em;
-            font-size: 1.3em;
-            color: $primaryColor;
-        }       
+    .blueLine{
+        margin-bottom: 4em;
     }
 }
+

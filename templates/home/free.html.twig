@@ -29,20 +29,30 @@
         </div>
 
         <div class="description">
-            {{ event.name }}
+            <h3>{{ event.name }}</h3>
             {# {{ event.fixed }} #}
             <p>{{ event.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
-            <p>Durée de la sortie : {{ event.duration }} heures</p>
+            <p><span>Durée de la sortie :</span> {{ event.duration }} heures</p>
             {{ event.enterpriseName }}
-            <p>Description : {{ event.description }}</p>
-            <p>Localité : {{ event.locality }}</p>
-            {# {{ event.image }} #}
-            {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+            <p><span>Description :</span> {{ event.description }}</p>
+            <p><span>Localité :</span> {{ event.locality }}</p>
             <p>{{ event.link }}</p>
             <p>{{ event.type }}</p>
         </div>
 
     </article>
+
+        {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
+    {% if app.user == event.user or is_granted('ROLE_ADMIN') %}
+        <form action="{{ path('app_deleteEvent',{id:event.id})}}" method='POST'>
+
+        <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
+        <button type="submit">Supprimer</button>
+        
+        </form>
+
+        <a href="{{path('app_editEvent', {id:event.id})}}">Editer</a>
+    {% endif %}
     <div class="blueLine"></div>
 {% endfor %}
 

@@ -8,6 +8,12 @@
 
 {# BANNER PART---------------------------- #}
 
+{# MESSAGE FLASH #}
+{% for message in app.flashes('success') %}
+    <div>{{ message }}</div>
+{% endfor %}
+
+
 <div id="mainBanner"></div>
 <div class="mainBannerText">
         <h2>Guide des sorties à Périgueux et en Dordogne</h2>
@@ -17,22 +23,12 @@
 </div>
 
 {# ---------------------------------MAIN PART------------------------ #}
-{# ACTU PART-------------------------------- #}
 
-<div id="actu">
-
-    <div class="actuImage">
-        <img src="https://www.perigueux-city.com/images/images/permanent/fete-de-la-musique-perigueux.jpg" alt="image de la sortie du moment">
-    </div>
-
-    <div class="actuText">
-        <h2>La sortie du moment</h2>
-        <div class="blueLine"></div>
-        <p>
-            Comme chaque année, à Périgueux comme ailleurs, le premier jour de l'été est une fête consacrée à la musique. Véritable phénomène de société, la fête de la musique est LE rendez-vous incontournable des amateurs de musique même si d'années en années, on tend à y retrouver toujours les mêmes groupes et DJ semi-professionnels qui mettent à mal l'esprit original de cette fête.
-        </p>
-    </div>
+<div class="lastEvent">
+    <h1>Les sorties du moment</h1>
+    <div class="blueLine"></div>
 </div>
+
 {% for event in events %}
 
     <article>
@@ -42,20 +38,33 @@
         </div>
 
         <div class="description">
-            {{ event.name }}
+            <h3>{{ event.name }}</h3>
             {# {{ event.fixed }} #}
             <p>{{ event.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
-            <p>Durée de la sortie : {{ event.duration }} heures</p>
+            <p><span>Durée de la sortie :</span> {{ event.duration }} heures</p>
             {{ event.enterpriseName }}
-            <p>Description : {{ event.description }}</p>
-            <p>Localité : {{ event.locality }}</p>
-            {# {{ event.image }} #}
-            {# <p><img src="{{ asset('upload_directory/' ~event.image) }}" alt="image de l'évènement"></p> #}
+            <p><span>Description :</span> {{ event.description }}</p>
+            <p><span>Localité :</span> {{ event.locality }}</p>
+
             <p>{{ event.link }}</p>
             <p>{{ event.type }}</p>
         </div>
 
     </article>
+
+    {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
+    {% if app.user == event.user or is_granted('ROLE_ADMIN') %}
+        <form action="{{ path('app_deleteEvent',{id:event.id})}}" method='POST'>
+
+        <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
+        <button type="submit">Supprimer</button>
+        
+        </form>
+
+        <a href="{{path('app_editEvent', {id:event.id})}}">Editer</a>
+    {% endif %}
+
+
     <div class="blueLine"></div>
 
 
