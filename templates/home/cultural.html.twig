@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cultural{% endblock %}
+
+{% block body %}
+
+{{ include('header.html') }}
+
+{# BANNER PART---------------------------- #}
+
+<div id="culturalBanner"></div>
+
+<div class="culturalBannerText">
+    <h2>Vos sorties culturelles</h2>
+    <div class="greenLine"></div>
+
+    <p>
+        Soif de connaissance et d'histoire ? La région est riche en expositions, musées ou visites guidées. Nous recensons pour vous toutes les sorties culturelles de Périgueux et alentours.
+    </p>
+</div>
+
+
+{% for cultural in culturals %}
+    {% if cultural.type.id == 10 %}
+
+    <article>
+        <div class="image">
+            <img src="{{ asset('upload_directory/' ~cultural.image) }}" alt="image de l'évènement">
+            <p> Prix : {{ cultural.price }} €</p>
+        </div>
+
+        <div class="description">
+            <h3>{{ cultural.name }}</h3>
+            {% if cultural.fixed == 0 %}
+                <p>Evènement temporaire</p>
+                {% else %}
+                <p>Evènement fixe</p>
+            {% endif %}
+            <p>{{ cultural.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
+            <p><span>Durée de la sortie :</span> {{ cultural.duration }} heures</p>
+            {{ cultural.enterpriseName }}
+            <p><span>Description :</span> {{ cultural.description }}</p>
+            <p><span>Localité :</span> {{ cultural.locality }}</p>
+            <p>{{ cultural.link }}</p>
+            <p>{{ cultural.type }}</p>
+        </div>
+
+    </article>
+
+            {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
+        {% if app.user == cultural.user or is_granted('ROLE_ADMIN') %}
+            <form action="{{ path('app_deleteEvent',{id:cultural.id})}}" method='POST'>
+
+            <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
+            <button type="submit">Supprimer</button>
+            
+            </form>
+
+            <div class="modify"><a href="{{path('app_editEvent', {id:cultural.id})}}">Editer</a></div>
+        {% endif %}
+        <div class="blueLine"></div>
+
+    {% endif %}
+{% endfor %}
+
+{{ include('footer.html') }}
+
+
+{% endblock %}

@@ -31,7 +31,11 @@
 
             <div class="description">
                 <h3>{{ kid.name }}</h3>
-                {# {{ event.fixed }} #}
+                {% if kid.fixed == 0 %}
+                    <p>Evènement temporaire</p>
+                    {% else %}
+                    <p>Evènement fixe</p>
+                {% endif %}
                 <p>{{ kid.eventDate | format_datetime(locale='fr',pattern='dd MMMM YYYY') }}</p>
                 <p><span>Durée de la sortie</span> {{ kid.duration }} heures</p>
                 <p>{{ kid.enterpriseName }}</p>
@@ -43,17 +47,17 @@
 
         </article>
 
-            {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
-    {% if app.user == kid.user or is_granted('ROLE_ADMIN') %}
-        <form action="{{ path('app_deleteEvent',{id:kid.id})}}" method='POST'>
+                {# PARTIE CRUD AVEC VERIFICATION DE L'UTILISATEUR #}
+        {% if app.user == kid.user or is_granted('ROLE_ADMIN') %}
+            <form action="{{ path('app_deleteEvent',{id:kid.id})}}" method='POST'>
 
-        <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
-        <button type="submit">Supprimer</button>
-        
-        </form>
+            <input type="hidden" name="token" value="{{csrf_token('delete-event')}}">
+            <button type="submit">Supprimer</button>
+            
+            </form>
 
-        <a href="{{path('app_editEvent', {id:kid.id})}}">Editer</a>
-    {% endif %}
+            <div class="modify"><a href="{{path('app_editEvent', {id:kid.id})}}">Editer</a></div>
+        {% endif %}
 
         <div class="blueLine"></div>
     {% endif %}

@@ -16,6 +16,9 @@
 
 <div id="mainBanner"></div>
 <div class="mainBannerText">
+        {% for message in app.flashes('success') %}
+            <div><p>{{ message }}</p></div>
+        {% endfor %}
         <h2>Guide des sorties à Périgueux et en Dordogne</h2>
         <div class="greenLine"></div>
 
@@ -39,7 +42,12 @@
 
         <div class="description">
             <h3>{{ event.name }}</h3>
-            {# {{ event.fixed }} #}
+            {% if event.fixed == 0 %}
+                <p>Evènement temporaire</p>
+                {% else %}
+                <p>Evènement fixe</p>
+            {% endif %}
+
             <p>{{ event.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
             <p><span>Durée de la sortie :</span> {{ event.duration }} heures</p>
             {{ event.enterpriseName }}
@@ -61,7 +69,7 @@
         
         </form>
 
-        <a href="{{path('app_editEvent', {id:event.id})}}">Editer</a>
+        <div class="modify"><a href="{{path('app_editEvent', {id:event.id})}}">Editer</a></div>
     {% endif %}
 
 

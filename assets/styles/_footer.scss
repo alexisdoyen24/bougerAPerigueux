@@ -10,6 +10,10 @@
             a{
                 color: aliceblue;
             }
+            a:hover{
+                color: $secondaryColor;
+                transition: .4s all;
+            }
         }
     }   
 }

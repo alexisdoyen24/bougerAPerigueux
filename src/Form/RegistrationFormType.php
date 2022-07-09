@@ -23,9 +23,10 @@ class RegistrationFormType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom'
             ])
-            ->add('image', FileType::class, [
-                'label' => 'Ajouter votre avatar'
-            ])
+            // ->add('image', FileType::class, [
+            //     'label' => 'Votre avatar',
+            //     'required' => false,
+            // ])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

@@ -71,38 +71,58 @@
             line-height: 1.5em;
         }
     }
+    .culturalBannerText{
+        top: 230px;
+        h2{
+            font-size: 1.5em;
+        }
+        p{
+            margin: 2em 2em;
+            font-size: 1.1em;
+            line-height: 1.5em;
+        }
+    }
 
     .log{
         display: none;
     }
 }
 
+// RESPONSIVE 1200PX----------------------------
+@media screen and (max-width: 1200px){
+    #registerFormContainer{
+        padding: 8em;
+        background-image: url(../Images/campagne.jpg);
+        background-size: cover;
+        background-position-y: center;
+    
+        .registerForm{
+            width: 83%;
+            background-color: $primaryColor;
+            margin: auto;
+            padding: 4em;
+            opacity: 0.9;
+            border-radius: 10px;
+            // margin-left: -70px;
+
+            input{
+                width: 60%;
+                margin: auto;
+                max-width: 100%;
+            }
+        }
+    }
+}
 // RESPONSIVE 768PX-------------------------
 
 @media screen and (max-width: 768px){
-    #actu{
-        @include flex (center, column-reverse, flex-start);
-    
-        .actuImage{
-            width: 50%;
-            img{
-                margin-left: 100%;
-                transform: translateX(-50%);
-                margin-top: 4em;
-                margin-bottom: 4em;
-                width: 250px;
-                height: 350px;
-            }
-            
+    #titleNav{
+        padding: 2em 0em 2em 1em;
+        a{
+            font-size: 0.8em;
         }
-    
-        .actuText{
-            width: 100%;
-            @include flex (center, column, center);
-            margin: auto;    
-        }
+        
     }
-
     article{
         @include flex (space-around, column-reverse, flex-start);
         background-color: $secondaryColor;
@@ -119,27 +139,48 @@
                 max-height: 400px;
             }
         }
+
+        .description{
+            width: 100%;
+        }
         
     }
     #registerFormContainer{
-        padding: 8em;
-        background-image: url(../Images/campagne.jpg);
-        background-size: cover;
-        background-position-y: center;
+        padding: 4em;
     
         .registerForm{
-            width: 90%;
+            width: 83%;
             background-color: $primaryColor;
             margin: auto;
+            // margin-left: -30px;
             padding: 4em;
             opacity: 0.9;
             border-radius: 10px;
-            margin-left: -15%;
-        }
 
-        input{
-            margin: auto;
-            max-width: 100%;
+            label {
+                display: block;
+                width: 50%;
+                text-align: right;
+                padding: 0.8em 0em;
+                color: aliceblue;
+                font-family: 'HindMadurai';
+                margin-right: 1em;
+            }
+
+            input{
+                width: 80%;
+                margin: auto;
+                max-width: 100%;
+                margin-left: 50%;
+                transform: translate(-50%);
+                margin-bottom: 1em;
+            }
+
+            h1{
+                text-align: center;
+                color: aliceblue;
+                margin-bottom: 0.5em;
+            }
         }
     }
 
@@ -147,25 +188,27 @@
         background-image: url(../Images/famille.jpg);
         background-size: cover;
         background-position-y: center;
-        padding: 8em;
+        padding: 4em;
         
         .loginForm{
-            width: 100%;
+            width: 83%;
             background-color: $primaryColor;
             margin: auto;
             padding: 5em;
             opacity: 0.9;
             border-radius: 10px;
+            margin-left: 50%;
+            transform: translate(-50%);
+            input{
+                width: 80%;
+                height: 2em;
+                max-width: 100%;
+                margin-left: 50%;
+                transform: translate(-50%);
+            }
         }
-        div{
-            margin-left: 0%;
-            transform: translateX(-16%);
-            padding: 1em;
-            // input{
-            //     margin: auto;
-            //     max-width: 100%;
-            // }
-        }       
+        
+        
     }
     #addEventContainer{
         padding: 8em;
@@ -184,7 +227,69 @@
             #event_Envoyer{
                 margin-top: 1.5em;
             }
+            #modify_event_Envoyer{
+                margin-top: 1.5em;
+            }
         }
     }
 }
 
+// RESPONSIVE 550PX-------------------------
+@media screen and (max-width: 550px){
+    #registerFormContainer{
+    
+        .registerForm{
+            margin-left: -40px;
+        }
+    }
+
+    #addEventContainer{
+        padding: 6em;  
+        .addEvent{
+            margin-left: -25%;
+            label{
+                text-align: center;
+            }
+        }
+    }
+}
+
+// RESPONSIVE 425PX-------------------------
+@media screen and (max-width: 425px){
+    #registerFormContainer{
+    
+        .registerForm{
+            margin-left: -50px;
+        }
+    }
+    #addEventContainer{
+        padding: 6em;  
+        .addEvent{
+            margin-left: -45%;
+            label{
+                text-align: center;
+            }
+        }
+    }
+    .mainBannerText{
+        position: absolute;
+        top: 140px;
+        color: aliceblue;
+        text-align: center;
+    
+        h2{
+            font-size: 1.4em;
+            
+        }    
+        p{
+            font-size: 1em;
+        }
+    }
+    #titleNav{
+        padding: 2em 0em 2em 1em;
+        a{
+            font-size: 0.7em;
+        }
+        
+    }
+}

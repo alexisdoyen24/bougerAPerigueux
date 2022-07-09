@@ -44,13 +44,64 @@ article{
     }
 }
 
-button{
-    width: 10em;
-    color: red;
-    background-color: black;
+// button{
+//     width: 10em;
+//     color: red;
+//     background-color: black;
+//     margin-left: 50%;
+//     transform: translate(-50%);
+// }
+// button:hover{
+//     background-color: blue;
+// }
+
+button, .modify a{
     margin-left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-100%);
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    color: $primaryColor;
+    font-weight: bold;
+    border: 2px solid $secondaryColor;
+    transition: .3s linear;
+    cursor: pointer;
+    background-color: aliceblue;
+    font-size: 1em;
 }
+
+.modify{
+    margin-top: -1.84em;
+    margin-left: 4em;
+}
+
 button:hover{
-    background-color: blue;
+    background-color: $secondaryColor;
+    color: aliceblue;
+}
+
+.modify a:hover{
+    background-color: $primaryColor;
+    color: aliceblue;
+}
+
+button::before{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: $primaryColor;
+    z-index: -1;
+    transition: .4s linear;
+    border-radius: 5px;
+}
+
+button:hover::before{
+    width: 100%;
+}
+
+.flashMessage{
+    color: red;
 }

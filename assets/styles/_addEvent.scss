@@ -12,6 +12,11 @@
         opacity: 0.9;
         border-radius: 10px;
 
+        #event_description{
+            width: 350px;
+            max-width: 100%;
+        }
+
         h1{
             text-align: center;
             color: aliceblue;
@@ -51,6 +56,53 @@
 
         #event_Envoyer:hover::before{
             width: 100%;
+        }
+        
+
+        #modify_event_Envoyer{
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-family: 'Montserrat';
+            color: $primaryColor;
+            font-weight: bold;
+            border: 2px solid $secondaryColor;
+            transition: .3s linear;
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+
+        #modify_event_Envoyer:hover{
+            background-color: $secondaryColor;
+            color: aliceblue;
+        }
+
+        #modify_event_Envoyer::before{
+            content: '';
+            position: absolute;
+            width: 0px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $primaryColor;
+            z-index: -1;
+            transition: .4s linear;
+        }
+
+        #modify_event_Envoyer:hover::before{
+            width: 100%;
+        }
+
+        #modify_event_fixed{
+            width: 2em;
+            height: 2em;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        #modify_event_eventDate{
+            display: inline;
         }
 
         #event_fixed{

@@ -22,6 +22,7 @@
         background: $secondaryColor;
         // z-index: -1;
         transition: .4s all;
+        top: 0px;
     }
     
     a:hover::before{

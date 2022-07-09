@@ -28,7 +28,8 @@ class EventType extends AbstractType
                 'required' => false,
             ])
             ->add('eventDate', DateType::class, [
-                'label' => "Date de l'évènement"
+                'label' => "Date de l'évènement",
+                'format' => 'dd-MM-yyyy',
             ])
             ->add('duration', TextType::class, [
                 'label' => 'Durée ( en heure )'
@@ -46,6 +47,7 @@ class EventType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '10M',

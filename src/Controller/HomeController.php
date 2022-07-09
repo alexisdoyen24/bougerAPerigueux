@@ -20,7 +20,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EventRepository $eventRepository): Response
     {
-        $showLastEvents = $eventRepository->findBy(array(), array('date'=>'desc'), 3, null);
+        $showLastEvents = $eventRepository->findBy(array(), array('date'=>'desc'), 4, null);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'events' => $showLastEvents
@@ -34,6 +34,16 @@ class HomeController extends AbstractController
         return $this->render('home/party.html.twig', [
             'controller_name' => 'HomeController',
             'parties' => $partiesEvent
+        ]);
+    }
+
+    #[Route('/sorties-culturelles', name: 'app_cultural')]
+    public function culture(EventRepository $eventRepository): Response
+    {
+        $culturalsEvent = $eventRepository->findAll();
+        return $this->render('home/cultural.html.twig', [
+            'controller_name' => 'HomeController',
+            'culturals' => $culturalsEvent
         ]);
     }
 

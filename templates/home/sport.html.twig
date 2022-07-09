@@ -30,7 +30,11 @@
 
             <div class="description">
                 <h3>{{ sport.name }}</h3>
-                {# {{ event.fixed }} #}
+                {% if sport.fixed == 0 %}
+                    <p>Evènement temporaire</p>
+                    {% else %}
+                    <p>Evènement fixe</p>
+                {% endif %}
                 <p>{{ sport.eventDate|date("d/m/Y", "Europe/Paris") }}</p>
                 <p><span>Durée de la sortie :</span> {{ sport.duration }} heures</p>
                 {{ sport.enterpriseName }}
@@ -51,7 +55,7 @@
         
         </form>
 
-        <a href="{{path('app_editEvent', {id:sport.id})}}">Editer</a>
+        <div class="modify"><a href="{{path('app_editEvent', {id:sport.id})}}">Editer</a></div>
     {% endif %}
         <div class="blueLine"></div>
     {% endif %}

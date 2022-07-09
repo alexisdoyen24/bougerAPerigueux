@@ -38,7 +38,9 @@ class AddEventController extends AbstractController
             $imageData->move($this->getParameter('upload_directory'), $imageName);
 
             $entityManager->persist($event);
-            $entityManager->flush();           
+            $entityManager->flush();  
+            $this->addFlash('success', "L'évènement a été créé");
+            return $this->redirectToRoute('app_home');
         }  
         return $this->render('add_event/addEvent.html.twig', [
              'eventForm' => $eventForm->createView(),
@@ -65,7 +67,7 @@ class AddEventController extends AbstractController
             
             $entityManager->persist($event);
             $entityManager->flush();
-            
+            $this->addFlash('success', "L'évènement a été modifié");
             return $this->redirectToRoute('app_home');
         }  
         return $this->render('add_event/editEvent.html.twig', [
@@ -81,7 +83,7 @@ class AddEventController extends AbstractController
         $csrfToken = $request->request->get('token');
         if($this->isCsrfTokenValid('delete-event', $csrfToken)){
             $eventRepository->remove($event, true);
-            $this->addFlash('success', "L'évènement' a été supprimé");
+            $this->addFlash('success', "L'évènement a été supprimé");
             return $this->redirectToRoute('app_home');
         }
     }   
